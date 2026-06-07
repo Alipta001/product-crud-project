@@ -121,7 +121,7 @@ class ProductController {
 }
 
 //delete
-async deleteProduct(req,res){
+async softDeleteProduct(req,res){
     try{
  const id = req.params.id;
     await Product.findByIdAndUpdate(id,{
@@ -129,8 +129,25 @@ async deleteProduct(req,res){
     });
     return res.status(200).json({
         status: true,
-        message: "Soft delete Successful!"
+        message: "Product deleted temporarily!"
     })
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({
+            status: false,
+            message: "Product deletion failed!"
+        })
+    }
+}
+
+async hardDeleteProduct(req, res){
+    try{
+        const id = req.params.id
+        const deleteProduct = await Product.findByIdAndDelete(id)
+        return res.status(200).json({
+            status: true,
+            message: "Product deleted permanently!"
+        })
     }catch(error){
         console.log(error);
         return res.status(500).json({

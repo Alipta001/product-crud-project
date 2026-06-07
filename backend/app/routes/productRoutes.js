@@ -12,7 +12,9 @@ router.get('/', ProductController.getAllProducts);
 router.get('/edit/:id', ProductController.editView);
 router.post('/update/:id', ProductController.updateProduct);
 
-router.put('/delete/:id', ProductController.deleteProduct);
+//delete
+router.put('/soft-delete/:id', ProductController.softDeleteProduct);
+router.delete('/hard-delete/:id', ProductController.hardDeleteProduct)
 
 //trash products
 router.get('/trash', ProductController.trashProducts)
