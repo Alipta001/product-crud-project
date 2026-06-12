@@ -6,6 +6,7 @@ import { endPoints } from "@/api/endPoints/endPoints";
 import { AxiosInstance } from "@/api/axios/axios";
 import { useState } from "react";
 
+
 const schema = yup.object({
   name: yup
     .string()
