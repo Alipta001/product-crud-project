@@ -1,10 +1,12 @@
 const express = require('express');
 const ProductController = require('../controller/ProductController');
-const ProductImage = require('../utils/fileUpload')
+const ProductImage = require('../utils/fileUpload');
+const  validate  = require('../middleware/validate');
+const productValidation = require('../utils/productValidate');
 const router = express.Router();
 
 router.get('/add', ProductController.addView);
-router.post('/create',ProductImage.single('image'), ProductController.createProduct);
+router.post('/create', ProductImage.single('image'), validate(productValidation), ProductController.createProduct);
 
 router.get('/list', ProductController.getAllProducts);
 router.get('/', ProductController.getAllProducts);

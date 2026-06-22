@@ -3,7 +3,10 @@
 
 class HomeController{
     async home(req, res){
-        res.render('home/home')
+        return res.status(200).json({
+            status: true,
+            message: "Access Granted."
+        })
     }
 }
 

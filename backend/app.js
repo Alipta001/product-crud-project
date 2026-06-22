@@ -6,7 +6,12 @@ const path = require('path');
 
 //cors
 const cors = require('cors');
-app.use(cors())
+app.use(
+  cors({
+    origin: 'http://localhost:4000',
+    credentials: true,
+  })
+);
 
 
 
@@ -39,6 +44,8 @@ const productRoutes = require('./app/routes/productRoutes');
 app.use('/products', productRoutes)
 const homeRoutes = require('./app/routes/homeRoutes')
 app.use('/',homeRoutes)
+const authRoutes = require('./app/routes/authRoutes');
+app.use('/auth', authRoutes)
 
 
 
