@@ -1,4 +1,8 @@
 export const endPoints = {
+  auth:{
+    login: "/auth/login",
+    register: "/auth/register",
+  },
   product: {
     create: "/products/create",
     list: "/products/list",
