@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { endPoints } from "@/api/endPoints/endPoints";
 import { AxiosInstance } from "@/api/axios/axios";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 const schema = yup.object({
@@ -36,6 +37,7 @@ const schema = yup.object({
 });
 
 export default function AddProductForm() {
+  const router = useRouter()
   const [preview, setPreview] = useState(
     "https://via.placeholder.com/300x300?text=Product+Image",
   );
@@ -68,6 +70,7 @@ export default function AddProductForm() {
       console.log(res.data);
 
       alert("Product Created Successfully");
+      router.push('/home')
       reset();
     } catch (error) {
       console.log(

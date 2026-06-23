@@ -3,7 +3,10 @@ const ProductController = require('../controller/ProductController');
 const ProductImage = require('../utils/fileUpload');
 const  validate  = require('../middleware/validate');
 const productValidation = require('../utils/productValidate');
+const AuthMiddileware = require('../middleware/auth');
 const router = express.Router();
+
+router.use(AuthMiddileware)
 
 router.get('/add', ProductController.addView);
 router.post('/create', ProductImage.single('image'), validate(productValidation), ProductController.createProduct);

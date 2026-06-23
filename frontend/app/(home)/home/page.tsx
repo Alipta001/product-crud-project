@@ -1,18 +1,3 @@
-// "use client"
-// import Hero from "@/components/home/hero";
-// import Navbar from "@/components/layouts/navbar"
-// import { useState } from "react";
-
-// export default function HomePage(){
-//     const [searchProducts, setSearchedProducts] = useState([])
-//     return(
-//         <>
-//         <Hero />
-//         </>
-//     );
-// }
-
-
 "use client";
 
 import { useEffect, useState } from "react";

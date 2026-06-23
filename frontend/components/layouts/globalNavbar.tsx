@@ -1,8 +1,4 @@
-
 "use client";
-
-import { AxiosInstance } from "@/api/axios/axios";
-import { endPoints } from "@/api/endPoints/endPoints";
 import Link from "next/link";
 import {
   FiSearch,
