@@ -243,12 +243,8 @@ return ( <section className="min-h-screen bg-gradient-to-br from-slate-100 via-w
             <div className="relative overflow-hidden">
 
               <img
-                src={
-                  product.image
-                    ? `${BaseURL}/uploads/${product.image}`
-                    : "/no-image.png"
-                }
-                alt={product.name}
+                src={product.image ? product.image : "/no-image.png"}
+  alt={product.name}
                 className="
                   w-full
                   h-56

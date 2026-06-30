@@ -3,6 +3,11 @@ const express = require('express');
 const ejs = require('ejs')
 const app = express()
 const path = require('path');
+const helmet = require('helmet')
+const limiter = require('./app/utils/limit')
+const Session=require('express-session')
+
+
 
 //cors
 const cors = require('cors');
@@ -13,8 +18,6 @@ app.use(
   })
 );
 
-
-
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -22,6 +25,21 @@ app.use(express.json())
 const connectDB = require('./app/config/db');
 connectDB();
 
+
+//Limit
+app.use(limiter)
+//Helmet
+app.use(helmet())
+
+
+app.use(Session({
+    secret:process.env.SESSION_SECRECT || "secrect",
+    resave:false,
+    saveUninitialized:false,
+    cookie:{
+        maxAge:1000*60*60*24 //1 day
+    }
+}))
 //setup ejs
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname, 'app', 'views'));
@@ -46,7 +64,6 @@ const homeRoutes = require('./app/routes/homeRoutes')
 app.use('/',homeRoutes)
 const authRoutes = require('./app/routes/authRoutes');
 app.use('/auth', authRoutes)
-
 
 
 

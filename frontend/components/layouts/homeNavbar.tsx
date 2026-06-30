@@ -13,8 +13,7 @@ import {
   FiX,
   FiLogOut,
 } from "react-icons/fi";
-import { useState } from "react";
-
+import { useState } from "react"; 
 export default function HomeNavbar({
   setProducts,
   getAllProducts,

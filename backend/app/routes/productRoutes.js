@@ -1,6 +1,6 @@
 const express = require('express');
 const ProductController = require('../controller/ProductController');
-const ProductImage = require('../utils/fileUpload');
+const upload = require('../middleware/multer');
 const  validate  = require('../middleware/validate');
 const productValidation = require('../utils/productValidate');
 const AuthMiddileware = require('../middleware/auth');
@@ -9,8 +9,12 @@ const router = express.Router();
 router.use(AuthMiddileware)
 
 router.get('/add', ProductController.addView);
-router.post('/create', ProductImage.single('image'), validate(productValidation), ProductController.createProduct);
-
+router.post(
+  "/create",
+  upload.single("image"),
+  validate(productValidation),
+  ProductController.createProduct
+);
 router.get('/list', ProductController.getAllProducts);
 router.get('/', ProductController.getAllProducts);
 

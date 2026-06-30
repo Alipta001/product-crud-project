@@ -9,7 +9,8 @@ const productSchema = new Schema({
 },
   price: { type: Number, required: true },
   brand:{
-    type: String
+    type: String,
+    default:"Rupakar"
   },
   stock:{
     type: Number
@@ -21,6 +22,7 @@ const productSchema = new Schema({
     type: String,
     default: "image"
   },
+  public_id: { type: String, default: "" },
   description: { type: String, required: true },
   isDeleted: {
     type: Boolean,
