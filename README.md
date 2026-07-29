@@ -162,5 +162,5 @@ Represents inventory items.
 ## Visual Demonstration (Placeholders)
 
 <p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="Dashboard Overview" width="800"/>
+  <img src="./frontend/public/product-crud-dashboard.jpeg" alt="Dashboard Overview" width="800"/>
 </p>
