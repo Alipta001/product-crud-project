@@ -1,166 +1,1252 @@
-# Product CRUD Platform
+<!-- ========================================================= -->
+<!--                PRODUCT MANAGEMENT PLATFORM               -->
+<!-- ========================================================= -->
 
-Inventory management for authenticated users to create, browse, update, search, and soft-delete product records with image uploads and Cloudinary-backed storage.
+<p align="center">
 
-[![License](https://img.shields.io/badge/license-ISC-blue)](https://opensource.org/licenses/ISC) [![Tech](https://img.shields.io/badge/tech-Express%20%2B%20Next.js-0f172a)](https://expressjs.com/) [![Build](https://img.shields.io/badge/build-manual-lightgrey)]()
+<img src="./frontend/public/banner.png" width="100%" alt="Product Management Platform Banner"/>
 
-## Table of Contents
+</p>
 
-- [Overview & System Purpose](#overview--system-purpose)
-- [Tech Stack Matrix](#tech-stack-matrix)
-- [System Architecture & Data Flow](#system-architecture--data-flow)
-- [Executable Architecture (Tree View)](#executable-architecture-tree-view)
-- [Security, Auth & RBAC](#security-auth--rbac)
-- [API Architecture & Endpoint Specification](#api-architecture--endpoint-specification)
-- [Database Schema & Data Models](#database-schema--data-models)
-- [UI Route Index & Access Control](#ui-route-index--access-control)
-- [Visual Demonstration (Placeholders)](#visual-demonstration-placeholders)
+<h1 align="center">
 
-## Overview & System Purpose
+🚀 Product Management Platform
 
-This workspace implements a split-stack product management application:
+</h1>
 
-- A Node.js/Express backend for authentication, product CRUD, soft-delete/trash workflows, image upload, validation, and MongoDB persistence.
-- A Next.js frontend using the App Router for authenticated product pages, login/register flows, and client-side routing.
+<h3 align="center">
 
-The primary engineering problem addressed is a small inventory workflow with user authentication, persisted product catalog data, image handling, and basic content lifecycle operations without introducing a separate admin panel or external CMS.
+Modern Full Stack Inventory Management System
 
-Runtime variables referenced in the codebase include: MONGO_URL, JWT_SECRET, SESSION_SECRET, PORT, CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET. No environment example file is present in the repository.
+</h3>
 
-## Tech Stack Matrix
+<p align="center">
 
-| Category | Technology | Usage Scope |
-|---|---|---|
-| Framework / Runtime | Express 5 | HTTP API server, route mounting, middleware pipeline |
-| Framework / Runtime | Next.js 16 | App Router-based frontend, route guards, page rendering |
-| Language | JavaScript / TypeScript | Backend runtime and frontend application logic |
-| State / Data Fetching | Axios, js-cookie, React Hook Form | API requests, token handling, form state |
-| Database / ORM | MongoDB, Mongoose | Product and user persistence |
-| Styling / UI | React 19, Tailwind CSS, React Icons | UI components and page layouts |
-| Auth & Security | bcrypt, jsonwebtoken, helmet, express-rate-limit, Joi | Password hashing, JWT issuance/verification, request hardening, validation |
+A production-ready inventory management platform built with <b>Next.js</b>, <b>Express.js</b>, <b>MongoDB</b>, <b>JWT Authentication</b>, and <b>Cloudinary</b>.
 
-## System Architecture & Data Flow
+</p>
 
-The request lifecycle is straightforward and explicit:
+<p align="center">
 
-1. A browser requests a page or API route.
-2. The Next.js layer applies route-level authentication checks through middleware.
-3. Protected API requests are forwarded to the Express backend, which applies JWT validation and route-specific middleware.
-4. Product writes may invoke image upload through Cloudinary storage middleware before persisting to MongoDB.
-5. Product reads and search operations return JSON payloads consumed by the Next.js UI.
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=22&duration=3500&pause=1000&color=3B82F6&center=true&vCenter=true&width=850&lines=Modern+Inventory+Management+Platform;Secure+JWT+Authentication;Cloudinary+Image+Storage;RESTful+API+Architecture;Built+with+Next.js+%26+Express.js;Responsive+UI+with+Professional+Architecture" />
+
+</p>
+
+---
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=nextdotjs"/>
+
+<img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react"/>
+
+<img src="https://img.shields.io/badge/Express.js-5-000000?style=for-the-badge&logo=express"/>
+
+<img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
+
+<img src="https://img.shields.io/badge/JWT-Authentication-orange?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary"/>
+
+</p>
+
+<p align="center">
+
+<img src="https://img.shields.io/github/license/Alipta001/product-management-platform?style=flat-square"/>
+
+<img src="https://img.shields.io/github/last-commit/Alipta001/product-management-platform?style=flat-square"/>
+
+<img src="https://img.shields.io/github/repo-size/Alipta001/product-management-platform?style=flat-square"/>
+
+<img src="https://img.shields.io/github/languages/top/Alipta001/product-management-platform?style=flat-square"/>
+
+<img src="https://img.shields.io/github/languages/count/Alipta001/product-management-platform?style=flat-square"/>
+
+<img src="https://img.shields.io/github/issues/Alipta001/product-management-platform?style=flat-square"/>
+
+</p>
+
+---
+
+<p align="center">
+
+<a href="#-overview">Overview</a> •
+
+<a href="#-key-features">Features</a> •
+
+<a href="#-tech-stack">Tech Stack</a> •
+
+<a href="#-installation">Installation</a> •
+
+<a href="#-screenshots">Screenshots</a> •
+
+<a href="#-author">Author</a>
+
+</p>
+
+---
+
+# 🌐 Live Demo
+
+> 🚧 **Currently under development**
+
+| Frontend | Backend |
+|-----------|----------|
+| Coming Soon | Coming Soon |
+
+---
+
+# 📑 Table of Contents
+
+- [✨ Overview](#-overview)
+- [🎯 Why This Project?](#-why-this-project)
+- [🌟 Key Features](#-key-features)
+- [🛠 Tech Stack](#-tech-stack)
+- [🏗 Architecture](#-architecture)
+- [📂 Folder Structure](#-folder-structure)
+- [🔐 Authentication Flow](#-authentication-flow)
+- [🌐 API Documentation](#-api-documentation)
+- [🗄 Database Design](#-database-design)
+- [📸 Screenshots](#-screenshots)
+- [⚙ Installation](#-installation)
+- [🔑 Environment Variables](#-environment-variables)
+- [🚀 Future Improvements](#-future-improvements)
+- [🤝 Contributing](#-contributing)
+- [👨‍💻 Author](#-author)
+
+---
+
+# ✨ Overview
+
+**Product Management Platform** is a modern **full-stack inventory management application** built to demonstrate production-ready web development practices. It enables authenticated users to securely manage product data through an intuitive dashboard while following a clean and scalable architecture.
+
+The project combines a **Next.js** frontend with an **Express.js** REST API and **MongoDB** database to provide a complete product lifecycle solution, including authentication, image uploads, validation, search, and secure CRUD operations.
+
+Rather than being a basic CRUD application, this project focuses on implementing concepts commonly used in real-world software development, such as secure authentication, middleware-based request handling, cloud image storage, API validation, and modular project architecture.
+
+---
+
+# 🎯 Problem Statement
+
+Managing inventory manually becomes inefficient as product data grows. Businesses need a centralized system where products can be created, updated, searched, and maintained securely while ensuring data consistency and an intuitive user experience.
+
+This project addresses those challenges by providing a secure product management platform that enables users to:
+
+- 📦 Organize and manage products efficiently
+- 🔍 Search products instantly
+- ☁️ Upload and manage product images
+- ♻️ Restore accidentally deleted products
+- 🔐 Protect sensitive operations through authentication
+- 📱 Access the application from any device with a responsive interface
+
+The primary goal was to build an application that reflects the architecture and development practices of modern production systems rather than a simple academic CRUD project.
+
+---
+
+# 🚀 Project Highlights
+
+<table>
+
+<tr>
+
+<td align="center" width="25%">
+
+### 🔐
+
+### Secure Authentication
+
+JWT-based authentication with protected routes and password hashing using bcrypt.
+
+</td>
+
+<td align="center" width="25%">
+
+### ☁️
+
+### Cloud Storage
+
+Product images are uploaded and managed securely using Cloudinary.
+
+</td>
+
+<td align="center" width="25%">
+
+### 🛡
+
+### Secure Backend
+
+Helmet, Joi validation, middleware, and rate limiting protect the API.
+
+</td>
+
+<td align="center" width="25%">
+
+### 📱
+
+### Responsive UI
+
+Modern responsive interface built with Next.js and React.
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="center">
+
+### 📦
+
+### Product Management
+
+Complete product lifecycle with Create, Read, Update, Delete, Search, and Restore functionality.
+
+</td>
+
+<td align="center">
+
+### ⚡
+
+### REST API
+
+Well-structured Express.js REST APIs with modular controllers and middleware.
+
+</td>
+
+<td align="center">
+
+### 🗄
+
+### MongoDB
+
+Persistent data storage using MongoDB and Mongoose models.
+
+</td>
+
+<td align="center">
+
+### 🧩
+
+### Scalable Architecture
+
+Organized folder structure with reusable components and clean separation of concerns.
+
+</td>
+
+</tr>
+
+</table>
+
+---
+
+# 🌟 Key Features
+
+## 🔐 Authentication & Security
+
+- JWT-based Authentication
+- Secure Password Hashing with bcrypt
+- Protected Routes
+- Express Authentication Middleware
+- Helmet Security Headers
+- Express Rate Limiting
+- Cookie-Based Authentication
+- Joi Request Validation
+
+---
+
+## 📦 Product Management
+
+- Create New Products
+- Update Existing Products
+- Delete Products
+- Soft Delete Support
+- Restore Deleted Products
+- Permanent Delete
+- Product Listing
+- Product Details
+- Product Search
+
+---
+
+## ☁️ Image Management
+
+- Cloudinary Image Upload
+- Automatic Image Storage
+- Image Preview
+- Asset Management
+- Cloud Image Deletion
+
+---
+
+## 💻 Frontend Features
+
+- Modern Next.js App Router
+- Responsive Dashboard
+- Clean User Interface
+- Client-side Navigation
+- React Hook Form Integration
+- Yup Form Validation
+- Axios API Communication
+- Modular Components
+
+---
+
+## ⚙ Backend Features
+
+- RESTful API Architecture
+- Modular Controller Structure
+- Middleware-Based Request Handling
+- MongoDB Integration
+- Mongoose Models
+- Centralized Error Handling
+- Input Validation
+- Secure API Design
+
+---
+
+## 💡 Why This Project Stands Out
+
+Unlike a basic CRUD demonstration, this project incorporates several production-oriented engineering practices:
+
+- ✅ Full Stack Architecture
+- ✅ Secure Authentication Flow
+- ✅ Cloud-Based Image Management
+- ✅ API Validation
+- ✅ Modular Code Organization
+- ✅ Responsive User Experience
+- ✅ Production-Ready Folder Structure
+- ✅ Real-World Development Practices
+- ✅ Maintainable and Scalable Codebase
+
+---
+# 🛠 Tech Stack
+
+This project leverages a modern full-stack JavaScript ecosystem to deliver a scalable, secure, and responsive product management platform.
+
+---
+
+## 🎨 Frontend
+
+| Technology | Purpose |
+|------------|---------|
+| ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=nextdotjs) | React Framework |
+| ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react) | User Interface |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) | Type Safety |
+| ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white) | Styling |
+| ![Axios](https://img.shields.io/badge/Axios-5A29E4?logo=axios&logoColor=white) | API Communication |
+| ![React Hook Form](https://img.shields.io/badge/React_Hook_Form-EC5990?logo=reacthookform&logoColor=white) | Form Handling |
+| ![Yup](https://img.shields.io/badge/Yup-Validation-success) | Client-side Validation |
+
+---
+
+## ⚙ Backend
+
+| Technology | Purpose |
+|------------|---------|
+| ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white) | JavaScript Runtime |
+| ![Express](https://img.shields.io/badge/Express.js-000000?logo=express) | REST API |
+| ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white) | Database |
+| ![Mongoose](https://img.shields.io/badge/Mongoose-880000?logo=mongoose) | ODM |
+| ![JWT](https://img.shields.io/badge/JWT-Authentication-orange) | Authentication |
+| ![bcrypt](https://img.shields.io/badge/bcrypt-Password_Hashing-blue) | Password Encryption |
+| ![Joi](https://img.shields.io/badge/Joi-Validation-green) | Request Validation |
+| ![Helmet](https://img.shields.io/badge/Helmet-Security-critical) | HTTP Security |
+| ![Rate Limit](https://img.shields.io/badge/Rate_Limit-API_Protection-important) | API Protection |
+| ![Multer](https://img.shields.io/badge/Multer-Upload-blueviolet) | File Upload |
+| ![Cloudinary](https://img.shields.io/badge/Cloudinary-Cloud_Storage-3448C5?logo=cloudinary) | Image Storage |
+
+---
+
+## 🧰 Development Tools
+
+| Tool | Purpose |
+|------|---------|
+| Git | Version Control |
+| GitHub | Repository Hosting |
+| VS Code | Code Editor |
+| Postman | API Testing |
+| npm | Package Management |
+
+---
+
+# 🏗 System Architecture
+
+The application follows a layered architecture where each layer has a dedicated responsibility.
+
+- **Presentation Layer** → Next.js frontend responsible for UI rendering and user interactions.
+- **API Layer** → Express.js REST APIs process requests and enforce business logic.
+- **Authentication Layer** → JWT middleware validates users before allowing access.
+- **Storage Layer** → MongoDB stores structured data while Cloudinary manages media assets.
+
+---
+
+## 📐 High-Level Architecture
 
 ```mermaid
 flowchart LR
-    U[Browser] --> N[Next.js App Router]
-    N --> M[Next middleware / route guard]
-    N --> E[Express API]
-    E --> A[Auth middleware]
-    E --> P[Product controller]
-    P --> DB[(MongoDB)]
-    P --> C[Cloudinary storage]
+
+A["👤 User"]
+
+B["💻 Next.js Frontend"]
+
+C["🔐 JWT Authentication"]
+
+D["⚙️ Express REST API"]
+
+E["📦 Product Controller"]
+
+F["☁️ Cloudinary"]
+
+G["🗄 MongoDB"]
+
+A --> B
+
+B --> C
+
+C --> D
+
+D --> E
+
+E --> F
+
+E --> G
 ```
 
-## Executable Architecture (Tree View)
+---
 
-```text
-backend/
-  app/
-    config/             # DB and Cloudinary configuration
-    controller/         # AuthController, ProductController
-    middleware/         # auth, multer, validate, rate limiting
-    models/             # auth and product schemas
-    routes/             # /auth and /products route definitions
-    utils/              # Joi validation, upload helpers, limiter
-  app.js                # Express bootstrap and middleware registration
-frontend/
-  app/                  # App Router pages: home, auth, add/edit/trash
-  components/           # Login, register, product forms, layout shells
-  api/                  # Axios client and endpoint constants
-  middleware.ts        # Next.js auth redirect middleware
+## 🔄 Product Request Lifecycle
+
+Whenever a user creates a product, the following workflow occurs:
+
+```mermaid
+sequenceDiagram
+
+participant User
+
+participant Frontend
+
+participant Backend
+
+participant Cloudinary
+
+participant Database
+
+User->>Frontend: Fill Product Form
+
+Frontend->>Backend: POST Product Data
+
+Backend->>Cloudinary: Upload Product Image
+
+Cloudinary-->>Backend: Image URL
+
+Backend->>Database: Save Product
+
+Database-->>Backend: Product Saved
+
+Backend-->>Frontend: Success Response
+
+Frontend-->>User: Updated Dashboard
 ```
 
-## Security, Auth & RBAC
+---
 
-Authentication is currently implemented as a straightforward token-based flow:
-
-- Registration creates a new user document with a bcrypt-hashed password.
-- Login verifies credentials, then issues a JWT signed with JWT_SECRET and valid for 24 hours.
-- The frontend stores the received token in a cookie named token and attaches it to outgoing requests through an Axios interceptor.
-- The Express product routes are protected by a JWT middleware that reads an Authorization header and rejects missing or invalid tokens.
-- The Next.js middleware redirects unauthenticated users away from protected routes to /auth/login.
-
-RBAC is only partially modeled. The user schema includes a role field with enum values user/admin, but the current implementation does not enforce role-based authorization branches in the controllers or route guards.
+## 🔁 Complete Request Flow
 
 ```mermaid
 flowchart TD
-    A[User submits login form] --> B[POST /auth/login]
-    B --> C[AuthController validates credentials]
-    C --> D[JWT issued with user id]
-    D --> E[Frontend stores token cookie]
-    E --> F[Protected product route request]
-    F --> G[Express auth middleware verifies token]
-    G --> H[Controller executes CRUD or upload logic]
+
+A[User Action]
+
+B[Next.js Frontend]
+
+C[Axios Request]
+
+D[Express Route]
+
+E[Authentication Middleware]
+
+F[Joi Validation]
+
+G[Controller]
+
+H[Cloudinary Upload]
+
+I[(MongoDB)]
+
+J[JSON Response]
+
+A --> B
+
+B --> C
+
+C --> D
+
+D --> E
+
+E --> F
+
+F --> G
+
+G --> H
+
+G --> I
+
+H --> I
+
+I --> J
+
+J --> B
 ```
 
-## API Architecture & Endpoint Specification
+---
 
-| Method | Endpoint | Description | Auth Required |
-|---|---|---|---|
-| POST | /auth/register | Create a new user account | No |
-| POST | /auth/login | Authenticate a user and return a JWT | No |
-| GET | /products | List active products | Yes |
-| GET | /products/list | Alias for listing products | Yes |
-| GET | /products/add | Render the add-product view | Yes |
-| POST | /products/create | Create a new product; uploads image to Cloudinary | Yes |
-| GET | /products/edit/:id | Render edit-product view | Yes |
-| POST | /products/update/:id | Update a product document | Yes |
-| GET | /products/search | Search products by name (case-insensitive) | Yes |
-| PUT | /products/soft-delete/:id | Mark a product as deleted without removing it | Yes |
-| DELETE | /products/hard-delete/:id | Permanently remove a product and delete its Cloudinary asset | Yes |
-| PUT | /products/restore/:id | Restore a soft-deleted product | Yes |
-| GET | /products/trash | List soft-deleted products | Yes |
+# 📂 Project Structure
 
-## Database Schema & Data Models
+```text
+📦 Product CRUD Platform
 
-### auth
+├── 📂 backend
+│
+│   ├── 📂 app
+│   │
+│   ├── 📂 config
+│   │   ├── db.js
+│   │   └── cloudinary.js
+│   │
+│   ├── 📂 controller
+│   │   ├── AuthController.js
+│   │   └── ProductController.js
+│   │
+│   ├── 📂 middleware
+│   │   ├── auth.js
+│   │   ├── multer.js
+│   │   └── validation.js
+│   │
+│   ├── 📂 models
+│   │   ├── User.js
+│   │   └── Product.js
+│   │
+│   ├── 📂 routes
+│   │   ├── authRoutes.js
+│   │   └── productRoutes.js
+│   │
+│   └── 📂 utils
+│
+│
+├── 📂 frontend
+│
+│   ├── 📂 app
+│   │
+│   ├── 📂 auth
+│   ├── 📂 home
+│   ├── 📂 addProduct
+│   ├── 📂 editProducts
+│   ├── 📂 trash
+│   │
+│   ├── 📂 components
+│   │
+│   ├── 📂 api
+│   │
+│   ├── 📂 hooks
+│   │
+│   ├── 📂 public
+│   │
+│   └── middleware.ts
+│
+│
+├── README.md
+│
+└── package.json
+```
 
-Represents app users.
+---
 
-- name: string, required
-- email: string, required
-- password: string, required (stored as a bcrypt hash)
-- role: string, enum user/admin, default user
-- isVerified: boolean, default false
-- timestamps: enabled
+# 🎯 Architecture Highlights
 
-### product
+<table>
 
-Represents inventory items.
+<tr>
 
-- name: string, required, unique
-- price: number, required
-- brand: string, default Rupakar
-- stock: number
-- category: string
-- image: string, default image
-- public_id: string, default empty
-- description: string, required
-- isDeleted: boolean, default false
+<td align="center">
 
-## UI Route Index & Access Control
+### 🧩 Modular
 
-| Route Path | View Purpose | Access Role |
-|---|---|---|
-| / | Home landing page | Authenticated |
-| /home | Product listing and discovery | Authenticated |
-| /auth/login | Login form | Public |
-| /auth/register | Registration form | Public |
-| /addProduct | Create-product form | Authenticated |
-| /editProducts/[id] | Edit-product form | Authenticated |
-| /trash | Soft-deleted product management | Authenticated |
+Frontend and backend are cleanly separated for maintainability.
 
-## Visual Demonstration (Placeholders)
+</td>
+
+<td align="center">
+
+### 🔒 Secure
+
+Authentication, validation, and security middleware protect the application.
+
+</td>
+
+<td align="center">
+
+### ☁️ Cloud Ready
+
+Images are stored in Cloudinary instead of the local filesystem.
+
+</td>
+
+</tr>
+
+<tr>
+
+<td align="center">
+
+### ⚡ Fast
+
+Next.js App Router delivers a smooth and responsive user experience.
+
+</td>
+
+<td align="center">
+
+### 📈 Scalable
+
+Layered architecture makes the project easy to extend with additional features.
+
+</td>
+
+<td align="center">
+
+### ♻️ Maintainable
+
+Reusable components and modular controllers reduce code duplication.
+
+</td>
+
+</tr>
+
+</table>
+
+---
+# 🔐 Authentication Flow
+
+The application implements **JWT (JSON Web Token)** based authentication to ensure secure access to protected resources.
+
+Every protected API request passes through an authentication middleware that validates the user's identity before executing business logic.
+
+---
+
+## 🔄 Authentication Workflow
+
+```mermaid
+flowchart TD
+
+A["👤 User"]
+
+B["Login Page"]
+
+C["POST /auth/login"]
+
+D["Verify Credentials"]
+
+E{"Valid User?"}
+
+F["Generate JWT"]
+
+G["Store Token"]
+
+H["Axios Request"]
+
+I["Auth Middleware"]
+
+J{"Token Valid?"}
+
+K["Execute Controller"]
+
+L["Return Protected Data"]
+
+M["401 Unauthorized"]
+
+A --> B
+
+B --> C
+
+C --> D
+
+D --> E
+
+E -->|No| M
+
+E -->|Yes| F
+
+F --> G
+
+G --> H
+
+H --> I
+
+I --> J
+
+J -->|Yes| K
+
+J -->|No| M
+
+K --> L
+```
+
+---
+
+## 🔒 Authentication Features
+
+- JWT Authentication
+- Protected Routes
+- Password Hashing using bcrypt
+- Middleware-Based Authorization
+- Cookie-Based Session Handling
+- Secure API Access
+- Request Validation
+- Unauthorized Request Handling
+
+---
+
+# 🌐 API Documentation
+
+The backend exposes a RESTful API for authentication and product management.
+
+---
+
+## Authentication APIs
+
+| Method | Endpoint | Description | Access |
+|---------|----------|-------------|--------|
+| POST | `/auth/register` | Register a new account | 🌐 Public |
+| POST | `/auth/login` | Authenticate user | 🌐 Public |
+
+---
+
+## Product APIs
+
+| Method | Endpoint | Description | Access |
+|---------|----------|-------------|--------|
+| GET | `/products` | Fetch all active products | 🔐 Protected |
+| GET | `/products/list` | List products | 🔐 Protected |
+| POST | `/products/create` | Create new product | 🔐 Protected |
+| POST | `/products/update/:id` | Update existing product | 🔐 Protected |
+| GET | `/products/search` | Search product | 🔐 Protected |
+| PUT | `/products/soft-delete/:id` | Move product to trash | 🔐 Protected |
+| PUT | `/products/restore/:id` | Restore product | 🔐 Protected |
+| DELETE | `/products/hard-delete/:id` | Permanently delete product | 🔐 Protected |
+| GET | `/products/trash` | View deleted products | 🔐 Protected |
+
+---
+
+# 📡 API Request Example
+
+## Create Product
+
+### Endpoint
+
+```http
+POST /products/create
+```
+
+### Request Headers
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+
+Content-Type: multipart/form-data
+```
+
+### Request Body
+
+```json
+{
+  "name": "iPhone 16 Pro",
+  "price": 129999,
+  "brand": "Apple",
+  "category": "Mobile",
+  "stock": 15,
+  "description": "Latest flagship smartphone"
+}
+```
+
+---
+
+### Success Response
+
+```json
+{
+  "status": true,
+  "message": "Product created successfully",
+  "data": {
+    "_id": "...",
+    "name": "iPhone 16 Pro",
+    "price": 129999
+  }
+}
+```
+
+---
+
+### Error Response
+
+```json
+{
+  "status": false,
+  "message": "Validation failed"
+}
+```
+
+---
+
+# 🔄 API Lifecycle
+
+```mermaid
+sequenceDiagram
+
+participant Client
+
+participant Frontend
+
+participant Backend
+
+participant Middleware
+
+participant Controller
+
+participant Cloudinary
+
+participant MongoDB
+
+Client->>Frontend: Submit Product Form
+
+Frontend->>Backend: POST Request
+
+Backend->>Middleware: Verify JWT
+
+Middleware-->>Backend: Authorized
+
+Backend->>Controller: Execute Business Logic
+
+Controller->>Cloudinary: Upload Image
+
+Cloudinary-->>Controller: Image URL
+
+Controller->>MongoDB: Save Product
+
+MongoDB-->>Controller: Success
+
+Controller-->>Frontend: JSON Response
+
+Frontend-->>Client: UI Updated
+```
+
+---
+
+# 🗄 Database Design
+
+The application stores user and product information using **MongoDB** with **Mongoose ODM**.
+
+---
+
+## 👤 User Collection
+
+| Field | Type | Description |
+|------|------|-------------|
+| name | String | User's Full Name |
+| email | String | Unique Email Address |
+| password | String | bcrypt Hashed Password |
+| role | String | User Role |
+| isVerified | Boolean | Verification Status |
+| createdAt | Date | Created Timestamp |
+| updatedAt | Date | Updated Timestamp |
+
+---
+
+## 📦 Product Collection
+
+| Field | Type | Description |
+|------|------|-------------|
+| name | String | Product Name |
+| price | Number | Product Price |
+| brand | String | Brand Name |
+| category | String | Product Category |
+| stock | Number | Available Stock |
+| description | String | Product Description |
+| image | String | Cloudinary Image URL |
+| public_id | String | Cloudinary Public ID |
+| isDeleted | Boolean | Soft Delete Flag |
+| createdAt | Date | Created Timestamp |
+| updatedAt | Date | Updated Timestamp |
+
+---
+
+## 🧬 Entity Relationship Diagram
+
+```mermaid
+erDiagram
+
+USER {
+
+ObjectId _id
+
+string name
+
+string email
+
+string password
+
+string role
+
+boolean isVerified
+
+}
+
+PRODUCT {
+
+ObjectId _id
+
+string name
+
+number price
+
+string brand
+
+string category
+
+number stock
+
+string image
+
+string public_id
+
+boolean isDeleted
+
+}
+```
+
+> **Current implementation:** The `Product` collection is not directly linked to a `User`. Products are managed globally. In a future version, a `createdBy` field could establish ownership for multi-user product management.
+
+---
+
+# 🛡 Security Features
+
+The application follows several security best practices to protect users, APIs, and uploaded assets.
+
+| Feature | Purpose |
+|---------|---------|
+| 🔐 JWT Authentication | Protect API endpoints |
+| 🔑 bcrypt | Secure password hashing |
+| 🛡 Helmet | Security headers |
+| 🚦 Express Rate Limiter | Prevent abuse |
+| ✅ Joi Validation | Validate incoming requests |
+| 📤 Multer | Secure file uploads |
+| ☁️ Cloudinary | Cloud-based image storage |
+| 🔒 Protected Routes | Restrict unauthorized access |
+
+---
+
+# 📈 Project Statistics
+
+| Category | Details |
+|----------|---------|
+| 🖥 Frontend | Next.js, React, TypeScript |
+| ⚙ Backend | Express.js, Node.js |
+| 🗄 Database | MongoDB + Mongoose |
+| 🔐 Authentication | JWT + bcrypt |
+| ☁️ Image Storage | Cloudinary |
+| 📦 API Style | RESTful Architecture |
+| 🛡 Security | Helmet, Rate Limiting, Joi |
+| 🎨 UI | Responsive Design |
+| 📱 Architecture | Full Stack MERN |
+
+---
+# 📸 Screenshots
+
+A glimpse into the application's user interface.
+
+---
+
+## 🔐 Login
 
 <p align="center">
-  <img src="./frontend/public/product-crud-dashboard.jpeg" alt="Dashboard Overview" width="800"/>
+<img src="./frontend/public//product-crud-login.jpeg" width="95%" alt="Login"/>
 </p>
+
+<p align="center">
+<b>Secure sign-in experience for authenticated users.</b>
+</p>
+
+---
+
+## 📝 Register
+
+<p align="center">
+<img src="./frontend//public//product-crud-register.jpeg" width="95%" alt="Register"/>
+</p>
+
+<p align="center">
+<b>Create a new account to access the product management workspace.</b>
+</p>
+
+---
+
+## 🏠 Dashboard
+
+<p align="center">
+<img src="./frontend/public/product-crud-dashboard.jpeg" width="95%" alt="Dashboard"/>
+</p>
+
+<p align="center">
+<b>View, search, and manage all products from a clean and responsive dashboard.</b>
+</p>
+
+---
+
+## ➕ Add Product
+
+<p align="center">
+<img src="./frontend/public/product-crud-addProduct.jpeg" width="95%" alt="Add Product"/>
+</p>
+
+<p align="center">
+<b>Create a new product with validation and Cloudinary image upload.</b>
+</p>
+
+---
+
+# ⚙️ Installation
+
+## Prerequisites
+
+Before running the project, ensure the following are installed:
+
+- Node.js (v18 or later)
+- npm
+- MongoDB
+- Git
+
+---
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/Alipta001/product-management-platform.git
+```
+
+```bash
+cd product-management-platform
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+The backend starts on:
+
+```
+http://localhost:8000
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend starts on:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file inside the **backend** directory.
+
+```env
+PORT=8000
+
+MONGO_URL=your_mongodb_connection_string
+
+JWT_SECRET=your_secret_key
+
+SESSION_SECRET=your_session_secret
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+
+CLOUDINARY_API_KEY=your_api_key
+
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+> Never commit your `.env` file to GitHub.
+
+---
+
+# 🚀 Deployment
+
+The application can be deployed using modern hosting platforms.
+
+| Layer | Recommended Platform |
+|--------|----------------------|
+| Frontend | Vercel |
+| Backend | Render / Railway |
+| Database | MongoDB Atlas |
+| Image Storage | Cloudinary |
+
+---
+
+# 💪 Challenges Faced
+
+While building this project, several real-world development challenges were addressed:
+
+- Implementing secure JWT authentication.
+- Managing image uploads with Cloudinary.
+- Validating API requests using Joi.
+- Structuring a scalable Express backend.
+- Building reusable React components.
+- Handling soft delete and restore workflows.
+- Connecting the frontend with protected REST APIs.
+- Designing a responsive user interface.
+
+---
+
+# 📚 What I Learned
+
+Working on this project helped strengthen my understanding of:
+
+- Full-stack application architecture.
+- REST API development using Express.js.
+- MongoDB schema design with Mongoose.
+- Authentication and authorization using JWT.
+- Secure password hashing with bcrypt.
+- Cloudinary image management.
+- Middleware-based request handling.
+- Client-side form validation.
+- API integration with Axios.
+- Building maintainable and scalable applications.
+
+---
+
+# 🛣 Roadmap
+
+Planned improvements for future versions:
+
+- [ ] Refresh Token Authentication
+- [ ] Complete Role-Based Access Control (RBAC)
+- [ ] User Profile Management
+- [ ] Dashboard Analytics
+- [ ] Product Categories
+- [ ] Pagination
+- [ ] Sorting & Advanced Filtering
+- [ ] Unit & Integration Tests
+- [ ] Docker Support
+- [ ] CI/CD Pipeline
+- [ ] Redis Caching
+- [ ] Email Notifications
+- [ ] Progressive Web App (PWA)
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+If you have ideas for improvements:
+
+1. Fork the repository.
+2. Create a feature branch.
+
+```bash
+git checkout -b feature/amazing-feature
+```
+
+3. Commit your changes.
+
+```bash
+git commit -m "feat: add amazing feature"
+```
+
+4. Push to GitHub.
+
+```bash
+git push origin feature/amazing-feature
+```
+
+5. Open a Pull Request.
+
+---
+
+# 📄 License
+
+This project is licensed under the **ISC License**.
+
+You are welcome to use, modify, and learn from this project in accordance with the license.
+
+---
+
+# 👨‍💻 Author
+
+<div align="center">
+
+## Alipta Ghosh
+
+**Computer Science Engineering Student**  
+**Full Stack Web Developer**
+
+Passionate about building modern, scalable, and secure web applications.
+
+---
+
+### 🌐 Connect with Me
+
+<p align="center">
+
+<a href="https://github.com/Alipta001">
+<img src="https://img.shields.io/badge/GitHub-Alipta001-181717?style=for-the-badge&logo=github"/>
+</a>
+
+<!-- Replace with your actual profile -->
+<a href="https://linkedin.com/in/YOUR-LINKEDIN">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin"/>
+</a>
+
+<!-- Replace with your deployed portfolio -->
+<a href="https://YOUR-PORTFOLIO.vercel.app">
+<img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel"/>
+</a>
+
+<!-- Replace with your email -->
+<a href="mailto:YOUR_EMAIL@gmail.com">
+<img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail"/>
+</a>
+
+</p>
+
+</div>
+
+---
+
+<div align="center">
+
+## ⭐ Support
+
+If you found this project helpful or interesting, consider giving it a **⭐ Star** on GitHub.
+
+Your support motivates me to continue building and sharing more full-stack projects.
+
+---
+
+**Thank you for visiting this repository! Happy Coding! 🚀**
+
+</div>
