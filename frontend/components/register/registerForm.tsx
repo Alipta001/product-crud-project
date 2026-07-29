@@ -32,7 +32,7 @@ export default function RegisterForm() {
 
       if (response.data.success) {
         alert("Registration Successful!");
-        router.push("/login");
+        router.push("/auth/login");
       }
     } catch (error) {
       console.error(error);

@@ -60,8 +60,7 @@ app.use(
 //Routes
 const productRoutes = require('./app/routes/productRoutes');
 app.use('/products', productRoutes)
-const homeRoutes = require('./app/routes/homeRoutes')
-app.use('/',homeRoutes)
+
 const authRoutes = require('./app/routes/authRoutes');
 app.use('/auth', authRoutes)
 
