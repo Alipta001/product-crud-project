@@ -4,6 +4,7 @@ import { AxiosInstance } from "@/api/axios/axios";
 import { endPoints } from "@/api/endPoints/endPoints";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import {
   FiSearch,
   FiTrash2,
@@ -14,6 +15,7 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 import { useState } from "react"; 
+
 export default function HomeNavbar({
   setProducts,
   getAllProducts,
@@ -24,8 +26,14 @@ export default function HomeNavbar({
   const router = useRouter();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    // 1. Remove token from Cookies
+    Cookies.remove("token", { path: "/" });
+    
+    // 2. Redirect to login page
     router.push("/auth/login");
+
+    // 3. Refresh router to clear cached authenticated states
+    router.refresh();
   };
 
   const handleSearch = async () => {
@@ -209,7 +217,7 @@ export default function HomeNavbar({
               {/* Mobile Logout */}
               <button
                 onClick={handleLogout}
-                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-red-500 text-white"
+                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-red-500 text-white cursor-pointer"
               >
                 <FiLogOut />
                 Logout
