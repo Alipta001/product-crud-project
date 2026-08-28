@@ -2,12 +2,6 @@
 <!--                PRODUCT MANAGEMENT PLATFORM               -->
 <!-- ========================================================= -->
 
-<p align="center">
-
-<img src="./frontend/public/banner.png" width="100%" alt="Product Management Platform Banner"/>
-
-</p>
-
 <h1 align="center">
 
 🚀 Product Management Platform
